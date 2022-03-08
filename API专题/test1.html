@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue组件之间通信⽅式有哪些</title>
+  <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <div id="app">
+  </div>
+  <script>
+    const app = Vue.createApp({})
+    const Test = {
+      data() {
+        return {
+          title: "Vue组件通行"
+        }
+      },
+      provide: {
+        user: 'John Doe'
+      },
+      template: 
+      `
+      <div>
+        {{ title }}
+        <!-- 模板的其余部分 -->
+      </div>`,
+    }
+    app.component('child',{
+      inject:['user'],
+      created() {
+        console.log(`${this.user}`);
+      }
+    })
+    Vue.createApp(Test).mount('#app')
+  </script>
+</body>
+</html>
