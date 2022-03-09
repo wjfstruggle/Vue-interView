@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <ul v-for="item in userList" v-if="item.isActive" :key="item">
+      <li>{{item.name}}</li>
+    </ul>
+  </div>
+  <script>
+   const app = new Vue({
+      el:"#app",
+      data:{
+        userList:[
+          {
+            name:'张三',
+            isActive:true
+          },{
+            name:'李四',
+            isActive:true
+          },{
+            name:'王五',
+            isActive:false
+          },{
+            name:'刘六',
+            isActive:true
+          },{
+            name:'傻⑦',
+            isActive:false
+          }
+        ]
+      },
+    })
+    console.log(app.$options.render);
+  </script>
+</body>
+</html>
